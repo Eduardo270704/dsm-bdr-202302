@@ -87,4 +87,4 @@ alter table emprestimo rename to tbl_emprestimo;
 alter table agencia rename to tbl_agencia;
 alter table tbl_agencia rename column cidade_agencia to endereco_agencia;
 
-create schema Eduardo
+create schema Eduardo;
