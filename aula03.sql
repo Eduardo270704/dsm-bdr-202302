@@ -1,6 +1,6 @@
 create database bd_aula03;
 
-\c bd_aula03;
+\ c bd_aula03;
 
 create table tbl_cliente (
 	codigo_cliente integer primary key,
@@ -27,3 +27,42 @@ create table tbl_livros (
 	codigo_titulo integer,
 	status text
 );
+
+create domain categoria_tipo text check (
+	value = 'drama'
+	or value = 'comedia'
+);
+
+ALTER TABLE
+	tbl_titulo
+ALTER COLUMN
+	categoria
+set
+	data type categoria_tipo;
+
+create domain status_chk text check (
+	value = 'disponivel'
+	or value = 'indisponivel'
+);
+
+ALTER TABLE
+	tbl_livros
+alter column
+	status
+set
+	data type status_chk;
+
+ALTER TABLE
+	tbl_livros
+ADD
+	CONSTRAINT FKlivro_titulo FOREIGN KEY (codigo_titulo) REFERENCES tbl_titulo (codigo_titulo);
+
+ALTER TABLE
+	tbl_emprestimo
+ADD
+	CONSTRAINT FKemprestimo_livro FOREIGN KEY (codigo_livro) REFERENCES tbl_livros (cod_livro);
+
+ALTER TABLE
+	tbl_emprestimo
+ADD
+	CONSTRAINT FKemprestimo_cliente FOREIGN KEY (codigo_cliente) REFERENCES tbl_cliente (codigo_cliente);
