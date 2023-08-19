@@ -1,8 +1,8 @@
 create database bd_sistema_bancario;
 
-\l;
+\ l;
 
-\c bd_sistema_bancario;
+\ c bd_sistema_bancario;
 
 create table tabela1 (
 	inteiro integer,
@@ -74,17 +74,38 @@ create table agencia(
 );
 
 drop table tabela1;
+
 drop table tabela2;
+
 drop table tabela3;
+
 drop table tabela4;
+
 drop table tabela5;
 
-alter table cliente rename to tbl_cliente;
-alter table tbl_cliente add column idade integer;
-alter table tbl_cliente add column cpf integer;
-alter table conta rename to tbl_conta;
-alter table emprestimo rename to tbl_emprestimo;
-alter table agencia rename to tbl_agencia;
-alter table tbl_agencia rename column cidade_agencia to endereco_agencia;
+alter table
+	cliente rename to tbl_cliente;
+
+alter table
+	tbl_cliente
+add
+	column idade integer;
+
+alter table
+	tbl_cliente
+add
+	column cpf integer;
+
+alter table
+	conta rename to tbl_conta;
+
+alter table
+	emprestimo rename to tbl_emprestimo;
+
+alter table
+	agencia rename to tbl_agencia;
+
+alter table
+	tbl_agencia rename column cidade_agencia to endereco_agencia;
 
 create schema Eduardo;
