@@ -115,16 +115,16 @@ SELECT
     tt.titulo,
     tl.status
 FROM
-    tbl_titulo as tt
-    LEFT JOIN tbl_livros as tl on tt.codigo_titulo = tl.codigo_titulo;
+    tbl_titulo AS tt
+    LEFT JOIN tbl_livros AS tl ON tt.codigo_titulo = tl.codigo_titulo;
 
 --Liste os títulos e suas descrições dos livros alugados
 SELECT
     tt.titulo,
     tt.descricao
 FROM
-    tbl_titulo as tt
-    LEFT JOIN tbl_livros as tl on tt.codigo_titulo = tl.codigo_titulo
+    tbl_titulo AS tt
+    LEFT JOIN tbl_livros AS tl ON tt.codigo_titulo = tl.codigo_titulo
 WHERE
     tl.status LIKE 'ALUGADO';
 
@@ -135,8 +135,39 @@ FROM
     tbl_cliente AS tc
     LEFT JOIN tbl_emprestimo AS te ON tc.codigo_cliente = te.codigo_cliente
 WHERE
-    te.numero_emprestimo is NULL;
+    te.numero_emprestimo IS NULL;
 
 --Liste os títulos e suas categorias dos livros disponiveis
+SELECT
+    tt.titulo,
+    tt.categoria
+FROM
+    tbl_titulo AS tt
+    LEFT JOIN tbl_livros AS tl ON tt.codigo_titulo = tl.codigo_titulo
+WHERE
+    tl.status like 'DISPONIVEL';
+
 --Liste os nomes dos clientes e os títulos dos livros que eles têm alugados
+SELECT
+    tc.nome,
+    tt.titulo
+FROM
+    tbl_cliente AS tc
+    INNER JOIN tbl_emprestimo AS te ON tc.codigo_cliente = te.codigo_cliente
+    INNER JOIN tbl_livros AS tl ON te.codigo_livro = tl.cod_livro
+    INNER JOIN tbl_titulo AS tt ON tl.codigo_titulo = tt.codigo_titulo
+WHERE
+    tl.status like 'ALUGADO';
+
 --Retorne o nome, titulo do livro e o status do esmprestimo do livro alugado pela Ana Oliveira
+SELECT
+    tc.nome,
+    tt.titulo,
+	tl.status
+FROM
+    tbl_cliente AS tc
+INNER JOIN tbl_emprestimo AS te ON tc.codigo_cliente = te.codigo_cliente
+INNER JOIN tbl_livros AS tl ON te.codigo_livro = tl.cod_livro
+INNER JOIN tbl_titulo AS tt ON tl.codigo_titulo = tt.codigo_titulo
+WHERE
+	tc.nome like 'Ana Oliveira';
