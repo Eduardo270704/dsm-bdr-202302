@@ -1,8 +1,6 @@
 CREATE DATABASE bd_aula04;
 
-\c bd_aula04
-
-CREATE DOMAIN chk_categoria TEXT CHECK (
+\ c bd_aula04 CREATE DOMAIN chk_categoria TEXT CHECK (
     VALUE = 'DRAMA'
     OR VALUE = 'COMEDIA'
 );

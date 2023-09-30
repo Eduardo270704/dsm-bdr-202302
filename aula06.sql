@@ -163,11 +163,11 @@ WHERE
 SELECT
     tc.nome,
     tt.titulo,
-	tl.status
+    tl.status
 FROM
     tbl_cliente AS tc
-INNER JOIN tbl_emprestimo AS te ON tc.codigo_cliente = te.codigo_cliente
-INNER JOIN tbl_livros AS tl ON te.codigo_livro = tl.cod_livro
-INNER JOIN tbl_titulo AS tt ON tl.codigo_titulo = tt.codigo_titulo
+    INNER JOIN tbl_emprestimo AS te ON tc.codigo_cliente = te.codigo_cliente
+    INNER JOIN tbl_livros AS tl ON te.codigo_livro = tl.cod_livro
+    INNER JOIN tbl_titulo AS tt ON tl.codigo_titulo = tt.codigo_titulo
 WHERE
-	tc.nome like 'Ana Oliveira';
+    tc.nome like 'Ana Oliveira';

@@ -1,4 +1,4 @@
-create database bd_aula03;
+CREATE DATABASE bd_aula03;
 
 \ c bd_aula03;
 
